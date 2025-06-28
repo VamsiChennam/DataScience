@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South India Yatra - Explore Southern India</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom animations for modal and tab content */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .animate-scaleIn {
+            animation: scaleIn 0.3s ease-out forwards;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-button.active {
+            background-color: #2563EB; /* Blue-600 */
+            color: white;
+        }
+        /* Lucide Icons - using inline SVGs */
+        .icon {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            stroke-width: 2;
+            stroke: currentColor;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-teal-50 via-emerald-100 to-lime-100 text-gray-800 flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-lg p-6 rounded-b-xl flex items-center justify-between flex-wrap gap-4 md:gap-0">
+        <div class="flex items-center gap-3">
+            <!-- Plane Icon (SVG) -->
+            <svg class="icon text-teal-600 w-8 h-8 md:w-10 md:h-10" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.8 19.2 16 11l3.5 -3.5a2.1 2.1 0 0 0 0 -3c-1.3 -1.3 -3 -1.3 -4.3 0L10 8 2.3 4.3c-.4 -.4 -1 .1 -1 .5L1 9l4 2l-3.5 3.5c-.9 .9 -.2 2.5 .9 2.8L7 17l.5 2.8c.3 1.1 1.9 1.8 2.8 .9l3.5 -3.5l2 4l4.5 -1.3c.4 -.1 .9 -.6 .5 -1L17.8 19.2Z" />
+                <path d="M15 10l.5 .5" />
+                <path d="M10 15l.5 .5" />
+            </svg>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+                South India Yatra
+            </h1>
+        </div>
+        <nav class="flex flex-wrap gap-4 md:gap-6 text-lg font-medium">
+            <a href="#" class="text-gray-700 hover:text-teal-600 transition duration-300">Home</a>
+            <a href="#" class="text-gray-700 hover:text-teal-600 transition duration-300">Destinations</a>
+            <a href="#" class="text-gray-700 hover:text-teal-600 transition duration-300">Packages</a>
+            <a href="#" class="text-gray-700 hover:text-teal-600 transition duration-300">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Content - Hero Section -->
+    <main class="flex-grow container mx-auto px-4 py-8 md:py-12">
+        <section class="text-center bg-white p-8 rounded-2xl shadow-xl mb-12 transform hover:scale-105 transition-transform duration-500">
+            <!-- Globe Icon (SVG) -->
+            <svg class="icon text-green-600 mx-auto mb-4 w-16 h-16" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a14.5 14.5 0 0 0 0 20a14.5 14.5 0 0 0 0 -20" />
+                <path d="M2 12h20" />
+            </svg>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                Discover the Enchanting South India
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-6">
+                Explore ancient temples, serene backwaters, lush hills, and vibrant cities of Southern India.
+            </p>
+            <button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out text-lg">
+                Plan Your Journey
+            </button>
+        </section>
+
+        <!-- Destination Tabs and Content -->
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+            <h3 class="text-3xl font-bold text-gray-900 mb-6 text-center">Our Top South Indian Destinations</h3>
+
+            <!-- Tab Buttons -->
+            <div id="tab-buttons" class="flex flex-wrap justify-center gap-3 mb-8 border-b border-gray-200 pb-4">
+                <!-- Buttons populated by JS -->
+            </div>
+
+            <!-- Tab Content Area -->
+            <div id="tab-content-area">
+                <!-- Tab content populated by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white p-6 mt-12 rounded-t-xl text-center">
+        <p class="text-sm md:text-base">&copy; <span id="current-year"></span> South India Yatra. All rights reserved.</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <a href="#" class="hover:text-teal-400 transition duration-300">Privacy Policy</a>
+            <span class="text-gray-600">|</span>
+            <a href="#" class="hover:text-teal-400 transition duration-300">Terms of Service</a>
+        </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="booking-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 z-50 hidden animate-fadeIn">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full relative transform scale-95 animate-scaleIn text-center">
+            <button id="booking-modal-close-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold p-2 leading-none rounded-full hover:bg-gray-100 transition duration-300" aria-label="Close">
+                &times;
+            </button>
+            <svg class="icon text-green-500 mx-auto mb-4 w-16 h-16" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1 -5.93-8.96" />
+                <path d="M22 4L12 14.01L9 11.01" />
+            </svg>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Booking Confirmed!</h3>
+            <p class="text-gray-700 text-lg mb-6" id="booking-message"></p>
+            <button id="booking-modal-ok-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full shadow-md transition duration-300 ease-in-out">
+                OK
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // Data for South Indian travel destinations
+        const southDestinations = [
+            {
+                id: 'kerala',
+                name: 'Kerala',
+                description: 'Known as "God\'s Own Country," famous for its serene backwaters, lush greenery, Ayurvedic treatments, and diverse wildlife.',
+                imageUrl: 'https://placehold.co/600x400/DDAAFF/333333?text=Kerala',
+                altText: 'Backwaters of Kerala',
+                bestTimeToVisit: 'September to March (pleasant and less humid)',
+                majorAttractions: ['Alleppey Backwaters', 'Munnar Tea Plantations', 'Fort Kochi', 'Periyar Wildlife Sanctuary'],
+                localCuisine: ['Appam and Stew', 'Karimeen Pollichathu', 'Kerala Prawn Curry', 'Sadya'],
+                travelTips: 'Experience a houseboat stay in Alleppey. Try an authentic Ayurvedic massage.',
+                packages: [
+                    { name: 'Kerala Backwater Bliss (5 Days)', price: '₹15,000', duration: '5 Days / 4 Nights', inclusions: ['Houseboat Stay', 'Cochin Sightseeing', 'Munnar Excursion'] },
+                    { name: 'Ayurveda & Beaches (7 Days)', price: '₹22,000', duration: '7 Days / 6 Nights', inclusions: ['Ayurvedic Rejuvenation', 'Beach Relaxation', 'Trivandrum Tour'] }
+                ]
+            },
+            {
+                id: 'tamilnadu',
+                name: 'Tamil Nadu',
+                description: 'The "Land of Temples," renowned for its ancient Dravidian architecture, vibrant culture, and beautiful coastlines.',
+                imageUrl: 'https://placehold.co/600x400/AADDFF/333333?text=Tamil+Nadu',
+                altText: 'Meenakshi Temple, Tamil Nadu',
+                bestTimeToVisit: 'October to March (mild and comfortable)',
+                majorAttractions: ['Meenakshi Amman Temple (Madurai)', 'Mahabalipuram', 'Brihadeeswarar Temple (Thanjavur)', 'Marina Beach (Chennai)', 'Kodaikanal'],
+                localCuisine: ['Idli Sambar', 'Dosa', 'Chettinad Chicken', 'Filter Coffee'],
+                travelTips: 'Dress modestly when visiting temples. Be prepared for humid weather in coastal areas.',
+                packages: [
+                    { name: 'Temple Trails of Tamil Nadu (6 Days)', price: '₹18,000', duration: '6 Days / 5 Nights', inclusions: ['Madurai, Thanjavur, Rameshwaram Temple Visits'] },
+                    { name: 'Chennai & Mahabalipuram Getaway (3 Days)', price: '₹9,500', duration: '3 Days / 2 Nights', inclusions: ['Chennai City Tour', 'Mahabalipuram Shore Temple'] }
+                ]
+            },
+            {
+                id: 'karnataka',
+                name: 'Karnataka',
+                description: 'A state of diverse landscapes, from historic ruins and palaces to pristine beaches and lush forests.',
+                imageUrl: 'https://placehold.co/600x400/CCAAFF/333333?text=Karnataka',
+                altText: 'Hampi Ruins, Karnataka',
+                bestTimeToVisit: 'October to March (pleasant)',
+                majorAttractions: ['Hampi Ruins', 'Mysore Palace', 'Bangalore (IT Hub, Gardens)', 'Coorg (Coffee Plantations)', 'Gokarna Beaches'],
+                localCuisine: ['Bisi Bele Bath', 'Mysore Pak', 'Neer Dosa', 'Coorg Pandi Curry'],
+                travelTips: 'Explore the ancient history in Hampi. Enjoy the cool climate and coffee in Coorg.',
+                packages: [
+                    { name: 'Karnataka Heritage Tour (7 Days)', price: '₹20,000', duration: '7 Days / 6 Nights', inclusions: ['Bangalore, Mysore, Hampi Excursions'] },
+                    { name: 'Coorg & Chikmagalur Hill Escape (4 Days)', price: '₹14,000', duration: '4 Days / 3 Nights', inclusions: ['Coffee Plantation Visit', 'Waterfalls & Viewpoints'] }
+                ]
+            },
+            {
+                id: 'andhra-telangana',
+                name: 'Andhra Pradesh & Telangana',
+                description: 'Rich in history, spirituality, and vibrant culture, offering ancient caves, grand monuments, and delicious cuisine.',
+                imageUrl: 'https://placehold.co/600x400/FFDDCC/333333?text=Andhra+Telangana',
+                altText: 'Charminar, Hyderabad',
+                bestTimeToVisit: 'October to March (mild)',
+                majorAttractions: ['Charminar (Hyderabad)', 'Ramoji Film City (Hyderabad)', 'Tirupati Temple', 'Belum Caves', 'Araku Valley'],
+                localCuisine: ['Hyderabadi Biryani', 'Gongura Pachadi', 'Mirchi ka Salan', 'Double Ka Meetha'],
+                travelTips: 'Explore the bustling bazaars around Charminar. Book tickets for Ramoji Film City in advance.',
+                packages: [
+                    { name: 'Hyderabad Heritage (4 Days)', price: '₹12,000', duration: '4 Days / 3 Nights', inclusions: ['City Tour, Charminar, Golconda Fort, Ramoji Film City'] },
+                    { name: 'Spiritual South (5 Days)', price: '₹16,000', duration: '5 Days / 4 Nights', inclusions: ['Tirupati, Srikalahasti, Mahabalipuram'] }
+                ]
+            }
+        ];
+
+        // Get elements
+        const tabButtonsContainer = document.getElementById('tab-buttons');
+        const tabContentArea = document.getElementById('tab-content-area');
+        const bookingModal = document.getElementById('booking-modal');
+        const bookingModalCloseButton = document.getElementById('booking-modal-close-button');
+        const bookingModalOkButton = document.getElementById('booking-modal-ok-button');
+        const bookingMessage = document.getElementById('booking-message');
+        const currentYearSpan = document.getElementById('current-year');
+
+        // Set current year in footer
+        currentYearSpan.textContent = new Date().getFullYear();
+
+        // Function to render tab buttons and initial content
+        function renderTabs() {
+            tabButtonsContainer.innerHTML = ''; // Clear existing buttons
+            tabContentArea.innerHTML = '';     // Clear existing content
+
+            southDestinations.forEach((destination, index) => {
+                // Create tab button
+                const button = document.createElement('button');
+                button.textContent = destination.name;
+                button.dataset.id = destination.id;
+                button.classList.add('tab-button', 'px-6', 'py-3', 'rounded-full', 'font-semibold', 'text-lg', 'text-blue-800', 'bg-blue-100', 'hover:bg-blue-200', 'transition', 'duration-300', 'shadow-md', 'hover:shadow-lg', 'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500', 'focus:ring-opacity-50');
+                tabButtonsContainer.appendChild(button);
+
+                // Create tab content div
+                const contentDiv = document.createElement('div');
+                contentDiv.id = `tab-content-${destination.id}`;
+                contentDiv.classList.add('tab-content', 'p-6', 'md:p-8', 'bg-white', 'rounded-2xl', 'shadow-inner');
+
+                contentDiv.innerHTML = `
+                    <div class="md:flex md:space-x-8">
+                        <div class="md:w-1/2 mb-6 md:mb-0">
+                            <img src="${destination.imageUrl}" alt="${destination.altText}" class="rounded-xl shadow-lg w-full h-auto object-cover mb-4" onerror="this.onerror=null; this.src='https://placehold.co/600x400/CCCCCC/666666?text=Image+Not+Found';">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-2">${destination.name} Overview</h4>
+                            <p class="text-gray-700 mb-4">${destination.description}</p>
+                            <p class="text-gray-700"><span class="font-semibold text-blue-700">Best Time to Visit:</span> ${destination.bestTimeToVisit}</p>
+                        </div>
+                        <div class="md:w-1/2">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-2">Major Attractions:</h4>
+                            <ul class="list-disc list-inside ml-4 mb-4 text-gray-700">
+                                ${destination.majorAttractions.map(attraction => `<li>${attraction}</li>`).join('')}
+                            </ul>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-2">Local Cuisine:</h4>
+                            <ul class="list-disc list-inside ml-4 mb-4 text-gray-700">
+                                ${destination.localCuisine.map(cuisine => `<li>${cuisine}</li>`).join('')}
+                            </ul>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-2">Travel Tips:</h4>
+                            <p class="text-gray-700">${destination.travelTips}</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-8 border-gray-200">
+
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4 text-center">Available Travel Packages</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        ${destination.packages.map(pkg => `
+                            <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                                <h5 class="text-xl font-bold text-blue-700 mb-2">${pkg.name}</h5>
+                                <p class="text-gray-700 mb-1"><strong>Price:</strong> ${pkg.price}</p>
+                                <p class="text-gray-700 mb-3"><strong>Duration:</strong> ${pkg.duration}</p>
+                                <p class="text-gray-600 mb-4"><strong>Includes:</strong> ${pkg.inclusions.join(', ')}</p>
+                                <button data-package-name="${pkg.name}" class="book-now-button bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition duration-300 ease-in-out">
+                                    Book Now
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                tabContentArea.appendChild(contentDiv);
+
+                // Activate the first tab by default
+                if (index === 0) {
+                    button.classList.add('active');
+                    contentDiv.classList.add('active');
+                }
+            });
+
+            // Add event listeners for tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const targetId = event.target.dataset.id;
+
+                    // Remove active class from all buttons and content
+                    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                    // Add active class to clicked button and its corresponding content
+                    event.target.classList.add('active');
+                    document.getElementById(`tab-content-${targetId}`).classList.add('active');
+                });
+            });
+
+            // Add event listeners for "Book Now" buttons
+            document.querySelectorAll('.book-now-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const packageName = event.target.dataset.packageName;
+                    showBookingConfirmation(packageName);
+                });
+            });
+        }
+
+        // Function to show booking confirmation modal
+        function showBookingConfirmation(packageName) {
+            bookingMessage.textContent = `You have successfully booked the "${packageName}" package! Our team will contact you shortly to finalize the details.`;
+            bookingModal.classList.remove('hidden');
+        }
+
+        // Function to hide booking confirmation modal
+        function hideBookingConfirmation() {
+            bookingModal.classList.add('hidden');
+        }
+
+        // Event listeners for booking modal buttons
+        bookingModalCloseButton.addEventListener('click', hideBookingConfirmation);
+        bookingModalOkButton.addEventListener('click', hideBookingConfirmation);
+        bookingModal.addEventListener('click', (event) => {
+            if (event.target === bookingModal) {
+                hideBookingConfirmation();
+            }
+        });
+
+
+        // Initial render of tabs when the page loads
+        document.addEventListener('DOMContentLoaded', renderTabs);
+    </script>
+</body>
+</html>
