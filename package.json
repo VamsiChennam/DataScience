@@ -1,0 +1,10 @@
+{
+  "name": "india-travel-historic-planner",
+  "version": "1.0.0",
+  "description": "Node.js planner for affordable India travel and historic sites",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
